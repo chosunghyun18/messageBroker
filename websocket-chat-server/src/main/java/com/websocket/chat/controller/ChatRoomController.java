@@ -1,14 +1,12 @@
 package com.websocket.chat.controller;
 
 import com.websocket.chat.model.ChatRoom;
-import com.websocket.chat.repo.ChatRoomRepository;
 import com.websocket.chat.service.ChatRoomService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
 import java.util.List;
 
 @RequiredArgsConstructor

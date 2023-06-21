@@ -15,8 +15,7 @@ import lombok.Setter;
 public class ChatRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "room_id")
-    private String roomId;
+    private Long roomId;
     private String name;
     public ChatRoom(String name){
         this.name = name;
