@@ -2,6 +2,7 @@ package com.websocket.chat.controller;
 
 import com.websocket.chat.model.ChatRoom;
 import com.websocket.chat.repo.ChatRoomRepository;
+import com.websocket.chat.service.ChatRoomService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +16,7 @@ import java.util.List;
 @RequestMapping("/chat")
 public class ChatRoomController {
 
-    private final ChatRoomRepository chatRoomRepository;
+    private final ChatRoomService chatRoomService;
 
     @GetMapping("/room")
     public String rooms(Model model) {
@@ -25,13 +26,13 @@ public class ChatRoomController {
     @GetMapping("/rooms")
     @ResponseBody
     public List<ChatRoom> room() {
-        return chatRoomRepository.findAllRoom();
+        return chatRoomService.findAllRoom();
     }
 
     @PostMapping("/room")
     @ResponseBody
     public ChatRoom createRoom(@RequestParam String name) {
-        return chatRoomRepository.createChatRoom(name);
+        return chatRoomService.createChatRoom(name);
     }
 
     @GetMapping("/room/enter/{roomId}")
@@ -43,6 +44,7 @@ public class ChatRoomController {
     @GetMapping("/room/{roomId}")
     @ResponseBody
     public ChatRoom roomInfo(@PathVariable String roomId) {
-        return chatRoomRepository.findRoomById(roomId);
+        Long Id = Long.valueOf(roomId);
+        return chatRoomService.findRoomById(Id);
     }
 }
